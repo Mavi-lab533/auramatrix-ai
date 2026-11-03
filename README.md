@@ -67,10 +67,10 @@ pressure and hidden supply inflation. Most tools show one number or one opinion.
 > so the pre-hackathon prototype is not part of its Git history.
 
 ## How this was built (AI-assisted development)
-This project was developed with an AI coding assistant (Claude). The developer set the product direction and decisions
+This project was built with the help of AI coding assistants. The developer set the product direction and decisions
 (consumer protection against crypto hype, honesty over polish, what to measure and what to refuse to claim), chose the data sources,
 ran and tested every feature on a live app, and rejected or reworked results that were misleading (for example, the back-test
-showed the score adds nothing beyond volatility, and that is reported rather than hidden). The AI assistant wrote and refactored much of the code
+showed the score adds nothing beyond volatility, and that is reported rather than hidden). AI assistants wrote and refactored much of the code
 under that direction. All Meta Model API outputs shown in the app are real model calls; there is no mock text.
 
 **What to look at as new work for this hackathon:** the right-hand column of the table above. The pre-hackathon prototype
