@@ -48,6 +48,7 @@ pressure and hidden supply inflation. Most tools show one number or one opinion.
 - **Multimodal input** (`muse-spark-1.3` image understanding): reads screenshots of pump/hype posts, extracts visible coins, promises and pressure tactics; image text is treated as data, never as instructions.
 - **Image generation** (`muse-image-1.0`, `/v1/images/generations`): optional abstract graphic whose composition follows the risk category. It carries no numbers.
 - **Tool calling** (`muse-spark-1.3`): the What-if agent calls the real scoring code as a function (`rescore`) instead of guessing; every call and result is shown in the UI.
+- **Muse Code** (Meta's coding agent, `muse-spark-1.3`): wrote the automated test suite for the scoring rules (`tests/test_scoring.py`, 16 tests).
 - *Not used yet:* `muse-voice-transcribe-1.0`, `sam-3.1`, `muse-wonder-1.0`, open-weight models.
 
 ## What existed before the hackathon vs. what was built during it
@@ -67,7 +68,7 @@ pressure and hidden supply inflation. Most tools show one number or one opinion.
 > so the pre-hackathon prototype is not part of its Git history.
 
 ## How this was built (AI-assisted development)
-This project was built with the help of AI coding assistants. The developer set the product direction and decisions
+This project was built with the help of AI coding assistants, including Meta's **Muse Code**, which wrote the test suite in `tests/`. The developer set the product direction and decisions
 (consumer protection against crypto hype, honesty over polish, what to measure and what to refuse to claim), chose the data sources,
 ran and tested every feature on a live app, and rejected or reworked results that were misleading (for example, the back-test
 showed the score adds nothing beyond volatility, and that is reported rather than hidden). AI assistants wrote and refactored much of the code
@@ -87,6 +88,11 @@ under that direction. All Meta Model API outputs shown in the app are real model
 pip install -r requirements.txt
 cp .env.example .env        # then put your MODEL_API_KEY inside
 streamlit run app.py        # or double-click AuraMatrix_Baslat.bat on Windows
+```
+Run the tests (no API key or internet needed):
+```bash
+pip install pytest
+python -m pytest tests -q   # 16 tests for the scoring rules
 ```
 `.env` is git-ignored. **Never commit API keys.**
 No key in `.env`? Paste your own Meta Model API key into the sidebar field (kept only in your browser session). Without any key, the score, risk statistics, radar, stress test and projection still work; only the Meta agents are disabled.
@@ -126,6 +132,7 @@ core/quant_metrics.py   Volatility, Sharpe, drawdown, Monte Carlo VaR/CVaR, supp
 core/projection.py      1/3/5/10-year inflation projection
 core/radar.py           Risk radar (SVG) drawn from the score breakdown
 backtest.py             Back-test of the score on 30 coins (see Validation)
+tests/test_scoring.py   16 tests for the scoring rules (written with Meta Muse Code)
 demo/                   Demo captions and a fictional pump-post image used to test the screenshot reader
 core/*                  Taleb tail-risk, Kahneman FOMO, Markowitz Sharpe, Fama anomaly, Hegel synthesis
 ```
