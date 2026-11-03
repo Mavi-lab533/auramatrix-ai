@@ -4,6 +4,8 @@
 
 > Meta Global AI Developer Hackathon · Track: **Build for Your World** · Indie Developer
 >
+> 🚀 **Live demo:** https://auramatrix-ai.streamlit.app
+>
 > **Educational risk analysis. Not investment advice.**
 >
 > 🌐 Available in **English** (default) and **Turkish**: switch in the sidebar. The agents answer in the selected language.
@@ -95,12 +97,12 @@ over one year of CoinGecko daily data (90-day look-back, 30-day look-forward, a 
 Only the history-based components can be tested (not vesting, supply growth or market cap).
 
 - **Within the same day, the score ranks coins in the expected direction** (average rank correlation with the following
-  30-day maximum drawdown: **+0.31**, 36 dates). A naive baseline that uses only 90-day volatility did better (**+0.43**).
+  30-day maximum drawdown: **+0.30**, 36 dates). A naive baseline that uses only 90-day volatility did better (**+0.43**).
   So in this sample **the score adds nothing beyond volatility as a predictor**; its value is transparency and explicit handling of missing data, not forecasting.
-- **Pooled across all dates the correlation was negative (-0.13)**, because almost all coins fell together in this period; market-wide moves dominate that number.
-- **Two components pointed the wrong way:** Sharpe (+0.32) and max drawdown (+0.24), i.e. coins with strong or deep recent history were not safer afterwards.
-  Removing them barely changed the within-day result (+0.31 to +0.33), so **we did not change the score**: tuning on the same data would be over-fitting.
-- Limits: one (mostly falling) year, 30 surviving large coins, overlapping windows, no significance testing. This is a sanity check, not proof.
+- **Pooled across all dates the correlation was negative (-0.16)**, and it flipped between the first half (-0.36) and the second half (-0.00) of the year: market-wide moves dominate that number.
+- **Two components pointed the wrong way:** Sharpe (+0.30) and max drawdown (+0.27), i.e. coins with strong or deep recent history were not safer afterwards.
+  Removing them barely changed the within-day result (+0.30 to +0.31/+0.32), so **we did not change the score**: tuning on the same data would be over-fitting.
+- Limits: a single year, 30 surviving large coins, overlapping windows, no significance testing. This is a sanity check, not proof.
   A fair next step is re-testing on a different period before changing any threshold.
 
 ## Known limitations (honest list)
