@@ -8,6 +8,8 @@
 >
 > *(Free hosting: if you see "This app has gone to sleep", click **Yes, get this app back up!** and wait about a minute.)*
 >
+> 🎬 **Demo video (2:45):** https://youtu.be/1_Z9DuH8JPw
+>
 > **Educational risk analysis. Not investment advice.**
 >
 > 🌐 Available in **English** (default) and **Turkish**: switch in the sidebar. The agents answer in the selected language.
