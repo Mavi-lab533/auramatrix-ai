@@ -124,7 +124,12 @@ if mode == "top":
         st.sidebar.error(T("sb.cg_failed"))
     else:
         labels = {k: f"#{d['market_cap_rank']} {k} - {d['name']}" for k, d in universe.items()}
-        pick = st.sidebar.selectbox(T("sb.coin"), list(labels), format_func=lambda k: labels[k])
+        # Keep the user's coin when the cached Top-100 list refreshes (ranks/order change every few minutes).
+        keys = list(labels)
+        prev = st.session_state.get("coin_pick_prev")
+        idx = keys.index(prev) if prev in keys else 0
+        pick = st.sidebar.selectbox(T("sb.coin"), keys, index=idx, format_func=lambda k: labels[k])
+        st.session_state["coin_pick_prev"] = pick
         asset_c = universe[pick]
 elif mode == "search":
     q = st.sidebar.text_input(T("sb.search_input"))
